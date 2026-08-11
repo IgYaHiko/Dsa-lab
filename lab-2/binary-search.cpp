@@ -38,4 +38,5 @@ int main() {
     vector<int> nums = {1,2,3,4,5};
     Solution sol;
     cout << sol.binarySearch(nums,target) << endl;
+    return 0;
 }
