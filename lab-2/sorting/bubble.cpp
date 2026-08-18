@@ -16,9 +16,6 @@ public:
          return nums;
     }
 };
-
-
-
 int main() {
     vector<int> nums = {4,5,6,7,7,45,1};
     Solution sol;
