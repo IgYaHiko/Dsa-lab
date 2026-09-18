@@ -1,9 +1,14 @@
 #include <iostream>
 #include <vector>
+#include <unordered_set>
 using namespace std;
 int main() {
-    vector<int> nums = {1,3,4,5};
-    cout << nums[0] << endl;
-    cout << nums[nums.size() - 1];
-    return 0;
+    int n = 5;
+    unordered_set<int> s;
+    for(int i=1; i<=n; i++) {
+            if(n % i == 1) {
+                s.insert(i);
+    }
+    cout << s.size();
+}
 }
