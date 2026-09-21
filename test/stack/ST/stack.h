@@ -7,9 +7,9 @@
 
 class My_STACK {
 public:
-    std::vector<int> st;
+    std::vector<char> st;
 
-    void st_push(int x) {
+    void st_push(char x) {
         st.push_back(x);
     }
 
