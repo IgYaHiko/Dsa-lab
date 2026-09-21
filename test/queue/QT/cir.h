@@ -1,24 +1,18 @@
-#ifndef MY_CIR_H
-#define MY_CIR_H
-
-#include <iostream>
-#include <vector>
-
+#ifndef MY_CIR_QUEUE
+#define MY_CIR_QUEUE
+#include<iostream>
+#include<vector>
 using namespace std;
 
-class CircularQueue {
-
+class My_circular_queue {
+public:
     vector<int> q;
-
     int front;
     int rear;
-    int capacity;
     int count;
+    int capacity;
 
-public:
-
-    CircularQueue(int size) {
-
+    My_circular_queue(int size) {
         capacity = size;
         q.resize(size);
 
@@ -27,65 +21,45 @@ public:
         count = 0;
     }
 
-    // Insert
     void enqueue(int n) {
-
-        if (count == capacity) {
-            cout << "--- Queue is full ---" << endl;
+        if(count  == capacity) {
+            cout << "\n --- the queue is full --- \n";
             return;
         }
-
         q[rear] = n;
-
         rear = (rear + 1) % capacity;
-
-        count++;
+        count ++;
     }
-
-    // Remove
     void dequeue() {
-
-        if (count == 0) {
-            cout << "--- Queue is empty ---" << endl;
+        if(count == 0) {
+            cout << "\n --- the queue is already empty --- \n";
             return;
         }
-
-        front = (front + 1) % capacity;
-
+        front = (front + 1) & capacity;
         count--;
     }
 
-    // Get front element
     int getFront() {
-
-        if (count == 0) {
-            cout << "--- Queue is empty ---" << endl;
+        if(count == 0) {
+            cout << "\n --- the queue is empty --- \n";
             return -1;
         }
-
+        cout <<  "\n  --- Rear ---\n" <<q[front];
         return q[front];
     }
 
-    // Get rear element
     int getRear() {
-
-        if (count == 0) {
-            cout << "--- Queue is empty ---" << endl;
+        if(count == 0) {
+            cout << "\n --- the queue is empty --- \n";
             return -1;
         }
 
-        int index = (rear - 1 + capacity) % capacity;
-
+        int index = (rear - 1 + capacity) % 5;
+        cout <<  "\n  --- Rear ---\n" <<q[index];
         return q[index];
     }
 
-    bool isEmpty() {
-
-        return count == 0;
-    }
-
     bool isFull() {
-
         if(count == capacity) {
             cout << "\n --- queue is full --- \n";
             return true;
@@ -95,8 +69,15 @@ public:
         }
     }
 
-    void display() {
+    bool isEmpty() {
+        if(count == 0) {
+            cout << "\n --- queue is empty --- \n";
+            return true;
+        }
+    return false;
+    }
 
+    void display_q() {
         if (count == 0) {
             cout << "--- Queue is empty ---" << endl;
             return;
@@ -104,14 +85,12 @@ public:
 
         int index = front;
 
-        for (int i = 0; i < count; i++) {
-
+        for(int i=0; i < count; i++) {
             cout << q[index] << " ";
-
             index = (index + 1) % capacity;
         }
-
         cout << endl;
+
     }
 };
 
